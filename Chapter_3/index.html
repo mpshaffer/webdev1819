@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marcel's Website </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        
+        <script>
+            function myFunction() {
+             var x = document.getElementById("myDIV");
+              if (x.style.display === "none") {
+                   x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+                }
+                </script>
+    </head>
+    <body>
+        
+      
+        <h1 class="heading">Marcel Shaffer</h1>
+        <ul class="navbar">
+          <li><a href="#index.html">Home</a></li>
+          <li><a href="https://www.robotics.org">Robotics</a></li>
+          <li><a href="https://www.candy.com/">Candy</a></li>
+          <li><a href="https://scied.ucar.edu/webweather/clouds/cloud-types">Clouds</a></li>
+        </ul>
+    <button onclick="myFunction()">
+        Peekaboo!</button>
+        <div id="myDIV">
+        BOO!
+        </div>
+        <br>
+        <img class="thumbnail" height="100" width="100" src="candy.jpg" alt="Italian Trulli">
+        <h2 class="navbar">Candy</h2>
+        <img class="thumbnail" height="100" width="100" src="clouds.jpg" alt="Italian Trulli">
+        <h2 class="navbar">Clouds</h2>
+        <img class="thumbnail" height="100" width="100" src="robot.jpeg" alt="Italian Trulli">
+        <h2 class="navbar">Robots</h2>
+
+
+
+        
+    </body>
+</html>

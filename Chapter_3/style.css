@@ -1,0 +1,39 @@
+body {
+    background-image: url("background.png");}
+.heading {
+    color: darkblue;
+    font-family: "Times New Roman", Times, serif;
+    background-color: white;
+    padding: 0px 100px 75px 100px;
+    border-style: solid;   
+    border-width: 3px;
+    border-color: #3abcb0;
+    text-align: center;
+    position: relative;
+    top: 0px;
+}
+.navbar {
+    color: darkblue;
+    font-family: "Times New Roman", Times, serif;
+    background-color: lightblue;
+    padding: 0px 0px 0px 0px;
+    border-style: solid;   
+    border-width: 3px;
+    border-color: #3abcb0;
+    text-align: center;
+    position: relative;
+    top: 0px;}
+#myDIV {
+            width: 100%;
+            padding: 50px 0;
+            text-align: center;
+            background-color: lightblue;
+            margin-top: 20px;
+}
+    
+    
+.thumbnail{
+    border:solid;
+    border-color: black
+}
+    
