@@ -1,0 +1,53 @@
+body{
+    font-family: helvetica;
+}
+.main{
+    background-color: lightblue;
+    box-shadow: 5px 10px 10px black;
+    border-radius: 10px 10px 10px 10px;
+    
+}
+.noindent{
+    text-indent: -40px;
+
+}
+em{
+    background-color: yellow
+}
+.secondary{
+    background-color: white;
+}
+.greenb{
+    border:dotted;
+    border-color: green;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-bottom: 15px;
+}
+.pink{
+  background-color: pink;
+}
+.aqua{
+  background-color: aqua;
+}
+.lemon{
+  background-color: #FFFACD;  
+}
+.grape{
+   background-color:  #421C52;
+} 
+.penguin{
+ background-image: url("http://goo.gl/e2x4ZK");
+ background-repeat: no-repeat;
+ height: 200px;
+ border: dotted;
+ border-color: green;
+}
+.inline{
+    display: inline-block;
+    
+    
+}
+ol {
+    list-style-type: lower-alpha;
+}
