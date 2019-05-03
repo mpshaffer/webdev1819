@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Brick Breaker</title>
+	<style>
+	           *{padding:0; margin:0;}
+	           canvas{background-color:#eee;display:block;margin:0 auto;}
+	           
+	</style>
+</head>
+<body>
+	<canvas height="230" id="myCanvas" width="480"></canvas>
+	<script>
+	           var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+
+//setup for setInterval
+// setInterval(function, millisecond);
+
+// setInterval(draw, 10);
+//replaced by calling the draw() function
+
+var x = canvas.width/2;
+//canvas.width/2 centers the ball horizontal; half the width of the
+//canvas is in. the middle
+var y = canvas.height - 30;
+//canvas.height - 30 controls the vertical position of the ball;
+//also pushes the ball 30 px from the bottom of the canvas
+var dx =2;
+//dx will udate the position of var x
+var dy  = -2;
+//dy will update the position of vat y
+var ballRadius = 10;
+//ballRadius will hold the radius of the drawn circle and for
+//later use in calculations
+var paddleHeight = 10;
+var paddleWidth = 75;
+var paddleX= (canvas.width-paddleWidth)/2;
+var rightPressed = false;
+//keyboard controll for right
+var leftPressed = false;
+//keyboard controll for right
+var brickRowCount = 3;
+var brickColumnCount = 5;
+var brickWidth = 75;
+var brickHeight = 20;
+var brickPadding = 10;
+var brickOffsetTop = 30;
+var brickOffsetLeft = 30; 
+var score =0;
+var lives = 3;
+
+var bricks = [];
+for (c=0; c<brickColumnCount; c++){
+	bricks[c] = [];
+	for (r=0; r<brickRowCount; r++){
+		bricks[c][r] = {x: 0, y: 0, status: 1}
+		//status checks the value of each bricks 
+
+	}
+}
+//loops the bricks from left to right and top to bottom
+
+document.addEventListener('keydown', keyDownHandler);
+document.addEventListener('keyup', keyUpHandler);
+
+
+function drawBricks(){
+	for (c=0; c<brickColumnCount; c++){
+		for (r=0; r<brickRowCount; r++){
+			if(bricks[c][r].status == 1){
+				var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+				var brickY =(r*(brickHeight+brickPadding))+brickOffsetTop;
+				bricks[c][r].x = brickX;
+				bricks[c][r].y = brickY;
+				ctx.beginPath();
+				ctx.rect( brickX, brickY, brickWidth, brickHeight);
+				ctx.fillStyle = '#FFFF00';
+				ctx.fill();
+				ctx.closePath();
+			}
+		} 
+	}
+}
+//sets up eventListener for keydown and keyup so when pressed the 
+//action will fire
+
+function keyDownHandler(e){
+	if(e.keyCode == 39){
+		rightPressed = true;
+	}
+	else if(e.keyCode == 37) {
+		leftPressed = true;
+	}
+}
+//when the e.keyCode = 39 then make rightPressed true
+//when the e.keyCode = 37 then make leftPressed true
+
+
+function keyUpHandler(e){
+	if(e.keyCode == 39){
+		rightPressed = false;
+	}
+	else if(e.keyCode == 37) {
+		leftPressed = false;
+	}
+}
+//when the e.keyCode = 39 then make rightPressed false
+//when the e.keyCode = 37 then make leftPressed false
+
+function drawBall() {
+	ctx.beginPath();
+	ctx.arc(x ,y ,ballRadius ,0 ,Math.PI*2);
+	ctx.fillStyle = '#0095DD';
+	ctx.fill();
+	ctx.closePath();
+}
+
+function drawPaddle(){
+	ctx.beginPath();
+	ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+	ctx.fillStyle = '#ff0000';
+	ctx.fill();
+	ctx.closePath();
+}
+
+function collisionDetection(){
+	for (c=0; c<brickColumnCount; c++){
+		for (r=0; r<brickRowCount; r++){
+			var b = bricks[c][r];
+			//calculations
+			if(b.status == 1){
+				if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight){
+				dy = -dy;
+				b.status = 0;
+				score++;
+				if(score == brickRowCount*brickColumnCount){
+					alert('You Win, Congrats!');
+					document.location.reload();
+				}
+				}			
+			}
+		}
+	}
+}
+
+function drawScore(){
+	ctx.font = '16px Arial';
+	ctx.fillStyle = '#0095DD';
+	ctx.fillText('Score: '+ score, 8, 20);
+}
+
+function drawLives() {
+	ctx.font = ctx.font = '16px Arial';
+	ctx.fillStyle = '#0085DD';
+	ctx.fillText('Lives: '+ lives, canvas.width-65, 20);
+}
+
+function draw(){
+	ctx.clearRect(0,0,canvas.width, canvas.height);
+	//draws a rect the same size as our canvas startin at 0,0
+	//and ending at the canvas.width(480), canvas.height(320)
+	//used to clear the canvas
+	drawBall();
+	drawPaddle();
+	drawBricks();
+	drawScore();
+	drawLives();
+	collisionDetection();
+
+	if(y +dy < ballRadius){
+		dy = -dy;
+	}
+
+	else if(y + dy >canvas.height-ballRadius){
+		if(x > paddleX && x < paddleX + paddleWidth){
+			dy = -dy;
+		} else {
+			lives--;
+			if(!lives){
+				alert('Game Over!');
+				document.location.reload();
+			} else {
+				x = canvas.width/2;
+				y = canvas.height-30;
+				dx = 2;
+				dy = -2;
+				paddleX = (canvas.width-paddleWidth)/2;
+			}
+		}
+	}
+	//if  the ball y position of the ball plus the amount of dy is 
+	//less than 0(than the ball will leave the canvas) then change 
+	//var dy to = -dy. -dy reverses the direction of the ball to 
+	//make -2 = --2 = +2;
+	//subtracting 10 from canvas.height and canvas.width keeps the ball
+	//from sinking in to the edges of the canvas
+	//if the ball reaches the bottom of the screen trigger 'game over'
+	//
+	if(x +dx < ballRadius || x + dx >canvas.width-ballRadius){
+		dx = -dx;
+	}
+	//document.location.reload() reloads the page
+
+	if(rightPressed && paddleX < canvas.width - paddleWidth){
+		paddleX += 7;
+	}
+	else if(leftPressed && paddleX > 0){
+		paddleX -= 7;
+	}
+
+
+	x+= dx;
+	//dx adds plus 2 to x every millisecond
+	y += dy;
+	//dy adds -2 to y every millisecond
+	requestAnimationFrame(draw);
+
+}
+
+document.addEventListener('mousemove', mouseMoveHandler);
+
+function mouseMoveHandler(e){
+	var relativeX = e.clientX - canvas.offsetLeft;
+	if(relativeX > 0 + paddleWidth/2 && relativeX < canvas.width-paddleWidth/2){
+		paddleX = relativeX - paddleWidth/2;
+//if(relativeX > 0 && relativeX < canvas.width) detects that the mouse 
+//pointer is in the canvas boundaries
+//paddleX = relativeX - paddleWidth/2; makes sure that the pointer is
+//the center of the paddle
+	}
+}
+
+
+draw();
+	           
+	</script>
+</body>
+</html>
