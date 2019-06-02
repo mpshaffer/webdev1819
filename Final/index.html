@@ -1,0 +1,233 @@
+<!--Checkbox: <input type="checkbox" id="myCheck"  onclick="Listlessness()"> -->
+<!DOCTYPE html>
+<html>
+   <head>
+      <title> Do you like living? </title>
+      <script>
+        //shipping time
+        var d = (new Date()+ " plus 4 days");
+        document.getElementById("demo").innerHTML = d;
+        
+        function listlessness() {
+            var checkBox = document.getElementById("myChecklistlessness");
+            var text = document.getElementById("textlistlessness");
+            if (checkBox.checked == true){
+            text.style.display = "block";
+            } 
+            else{
+            text.style.display = "none";
+            }
+        }
+        function hopelessness() {1000000
+            var checkBox = document.getElementById("myCheckhopelessness");
+            var text = document.getElementById("texthopelessness");
+            if (checkBox.checked == true){
+            text.style.display = "block";
+            } 
+            else{
+            text.style.display = "none";
+            }
+        }
+        function boredom() {
+            var checkBox = document.getElementById("myCheckboredom");
+            var text = document.getElementById("textboredom");
+            if (checkBox.checked == true){
+            text.style.display = "block";
+            } 
+            else{
+            text.style.display = "none";
+            }
+        }
+        function suicidal() {
+            var checkBox = document.getElementById("myChecksuicidal");
+            var text = document.getElementById("textsuicidal");
+            if (checkBox.checked == true){
+            text.style.display = "block";
+            } 
+            else{
+            text.style.display = "none";
+            }
+        }
+        function tiredness() {
+            var checkBox = document.getElementById("myChecktiredness");
+            var text = document.getElementById("textmotivation");
+            if (checkBox.checked == true){
+            text.style.display = "block";
+            } 
+            else{
+            text.style.display = "none";
+            }
+        }
+        function motivation() {
+            var checkBox = document.getElementById("myCheckmotivation");
+            var text = document.getElementById("texttiredness");
+            if (checkBox.checked == true){
+            text.style.display = "block";
+            } 
+            else{
+            text.style.display = "none";
+            }
+        }
+        function unexistence() {
+            var checkBox = document.getElementById("myCheckunexistence");
+            var text = document.getElementById("textunexistence");
+            if (checkBox.checked == true){
+            text.style.display = "block";
+            } 
+            else{
+            text.style.display = "none";
+            }
+        }
+        function inattention() {
+            var checkBox = document.getElementById("myCheckinattention");
+            var text = document.getElementById("textinattention");
+            if (checkBox.checked == true){
+            text.style.display = "block";
+            } 
+            else{
+            text.style.display = "none";
+            }
+        }
+      </script>
+      <style>
+      body{background-color: #41B3a3}
+      .intro{
+            text-align:center;
+            color:black;
+            margin: auto;
+            width: 100%;
+            
+            padding: 10px;
+            align:center; 
+      }
+      .symptoms{
+                color:black;
+                margin: auto;
+                width: 50%;
+                
+                padding: 10px;
+      
+          
+      }
+      .solutions{
+                background-color:white;
+                color:black;
+                margin: auto;
+                width: 50%;
+                border-style:solid;
+                border-width:5px;
+                border-color: #E27D60;
+                padding: 10px;
+                text-decoration: underline;
+      }
+      .smile{
+          width:500px;
+          height:600px;
+          
+      }
+      
+      .polite{text-align:center;}
+      
+              .button {
+          display: inline-block;
+          border-radius: 4px;
+          background-color: #f4511e;
+          border: none;
+          color: #FFFFFF;
+          text-align: center;
+          font-size: 28px;
+          padding: 20px;
+          width: 200px;
+          transition: all 0.5s;
+          cursor: pointer;
+          margin: 5px;
+        }
+        
+        .button span {
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          transition: 0.5s;
+        }
+        
+        .button span:after {
+          content: '\00bb';
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          right: -20px;
+          transition: 0.5s;
+        }
+        
+        .button:hover span {
+          padding-right: 25px;
+        }
+        
+        .button:hover span:after {
+          opacity: 1;
+          right: 0;
+    }
+      
+      
+      
+      
+      
+      </style>
+   </head>
+   <body>
+      <div class="intro">
+      <h1>Do you like living?</h1>
+      <p>Many people struggle with this question. Everyone from bank managers to homeless cancer patients sometimes wishes that their life was better, that they were happier.</p>
+      <p>Coping strategies for managing the tedium and boredom of everyday life vary, but regual attendence at therpist offices is a common treatment plan. </p>
+      <h2>But is there a better way?</h2>
+      <p>What if I were to tell you that we can help? Our company has been the purveyor of premium life enhancemt products since the early 1700's.</p>
+      <p>Our products, though of course ompelly effective, were unnacaseible to most people. From reasons as various as innefiect local beuarcies banning us from the state, to high prices driven by high manufacturing costs</p>
+      <h2>That changes today!</h2>
+      <p>Due to sudden drastic decreases in the cost of ingredients and in our production costs, we are now able to offer our product cheaper than ever before!</p>
+      </div>
+      <h1 class="polite" style="align:center;">To begin, tell us a little about yourself</h1>
+      
+      <div class = "symptoms">
+         <form action="">
+            <p>What is your Gender?</p>
+            <br>
+            <input type="radio" name="gender" value="male"> Male<br>
+            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="radio" name="gender" value="other"> Other<br>
+            <br>
+            <p>Which of the following synmptoms would you like to treat?</p>
+           
+           
+            <input type="checkbox" id="myChecklistlessness" onclick="listlessness()"> Listlessness             <br>
+            <input type="checkbox" id="myCheckhopelessness" onclick="hopelessness()"> Feelings of hopelessness <br>
+            <input type="checkbox" id="myCheckboredom"      onclick="boredom()">      Boredom                  <br>
+            <input type="checkbox" id="myChecksuicidal"     onclick="suicidal()">     Suicidal Thoughts        <br>
+            <input type="checkbox" id="myChecktiredness"    onclick="tiredness()">    Tiredness                <br>
+            <input type="checkbox" id="myCheckmotivation"   onclick="motivation()">   Lack Of Motivation       <br>
+            <input type="checkbox" id="myCheckunexistence"  onclick="unexistence()">  Desire of Unexistence    <br>
+            <input type="checkbox" id="myCheckinattention"  onclick="inattention()">  Inattention              <br>
+      </div>
+      <div class= "date">
+          <p style="text-align:center;">All shipments will arrive in four days, if you ordered today your package would arrive four days from today</p>
+          <h1 id="demo"></h1>
+      </div>
+      
+      <div class = "solutions">
+        <h3>Reccomended medicines and dosages</h3>
+        <p id="textlistlessness" style="display:none"> Amphetamine 300mg</p>
+        <p id="texthopelessness" style="display:none"> Desvenlafaxine 200mg</p>
+        <p id="textboredom" style="display:none">      Phencyclidine 600mg</p>
+        <p id="textsuicidal" style="display:none">     Venlafaxine 200mg </p>
+        <p id="texttiredness" style="display:none">    Duloxetine 2000mg</p>
+        <p id="textmotivation" style="display:none">   Modafinil 400mg </p>
+        <p id="textunexistence" style="display:none">  Tranylcypromine 70mg </p>
+        <p id="textinattention" style="display:none">  Atomoxetine Hydrochloride 500mg</p>
+        <h3>Take all pills in full dosages daily, you will be resupplied monthly.</h3>
+        
+       
+        <a style="text-decoration:none;" href="order.html" class="button">Order</a>
+      </div>
+        
+     
+   </body>
+</html>
